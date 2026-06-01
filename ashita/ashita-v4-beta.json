@@ -37,7 +37,7 @@
     {
       "id": "ashita-update",
       "name": "Update Ashita",
-      "description": "Pull the Ashita git repository. Important! This will overwrite git managed files, don't modify examples!",
+      "description": "Pull the Ashita git repository. Important! This will overwrite git managed files, don't modify examples and don't run this while the game is running!",
       "steps": [
         {
           "type": "git",
