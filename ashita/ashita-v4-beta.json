@@ -1,6 +1,6 @@
 {
-  "id": "ashita-v4",
-  "name": "Ashita V4",
+  "id": "ashita-v4-beta",
+  "name": "Ashita V4 beta",
   "variables": {
     "ASHITA_DIR": "drive_c/AshitaV4",
     "ASHITA_ROOT": "${var.PREFIX}/${var.ASHITA_DIR}",
