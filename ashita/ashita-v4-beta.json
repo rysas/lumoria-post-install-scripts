@@ -1,0 +1,52 @@
+{
+  "id": "ashita-v4",
+  "name": "Ashita V4",
+  "variables": {
+    "ASHITA_DIR": "drive_c/AshitaV4",
+    "ASHITA_ROOT": "${var.PREFIX}/${var.ASHITA_DIR}",
+    "ASHITA_CONFIG_BOOT": "${var.ASHITA_ROOT}/config/boot"
+  },
+  "downloads": [],
+  "entrypoints": [
+    {
+      "id": "ashita-cli",
+      "name": "Ashita CLI",
+      "exe": "${var.ASHITA_ROOT}/Ashita-cli.exe",
+      "args": ["lumoria-retail.ini"]
+    }
+  ],
+  "redists": ["dotnet48", "vcrun2022", "gdiplus", "allfonts", "win10"],
+  "steps": [
+    {
+      "type": "git",
+      "command": "clone",
+      "description": "Clone Ashita V4 beta into prefix",
+      "src": "https://github.com/AshitaXI/Ashita-v4beta.git",
+      "dst": "${var.ASHITA_ROOT}",
+      "verify_paths": ["${var.ASHITA_ROOT}/Ashita-cli.exe"]
+    },
+    {
+      "type": "copy",
+      "description": "Seed Ashita's example-retail.ini as lumoria-retail.ini",
+      "src": "${var.ASHITA_CONFIG_BOOT}/example-retail.ini",
+      "dst": "${var.ASHITA_CONFIG_BOOT}/lumoria-retail.ini",
+      "verify_paths": ["${var.ASHITA_CONFIG_BOOT}/lumoria-retail.ini"]
+    }
+  ],
+  "actions": [
+    {
+      "id": "ashita-update",
+      "name": "Update Ashita",
+      "description": "Pull the Ashita git repository. Important! This will overwrite git managed files, don't modify examples!",
+      "steps": [
+        {
+          "type": "git",
+          "command": "pull",
+          "description": "Update Ashita Repository",
+          "dst": "${var.ASHITA_ROOT}",
+          "verify_paths": ["${var.ASHITA_ROOT}/Ashita-cli.exe"]
+        }
+      ]
+    }
+  ]
+}⏎
